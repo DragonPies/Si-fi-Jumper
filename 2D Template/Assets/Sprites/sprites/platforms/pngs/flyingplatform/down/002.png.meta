@@ -1,14 +1,10 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: ee0999f828e5190419731e55c190a5e3
-=======
-guid: 4492963af0089b54d93449a37098f099
->>>>>>> 0179c669277c33d22bb112ddb8e38ea8b1bf7870
+guid: fb5f7ae64b17b8e45a00c0a45e0a64f1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4972214917461303713
-    second: walkingrightm2_0
+      213: 7417498029127908629
+    second: 002_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -41,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -130,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walkingrightm2_0
+      name: 002_0
       rect:
         serializedVersion: 2
-        x: 9
+        x: 0
         y: 0
-        width: 11
-        height: 30
+        width: 60
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1a1ed2e9f1bd00540800000000000000
-      internalID: 4972214917461303713
+      spriteID: 51d345c682f30f660800000000000000
+      internalID: 7417498029127908629
       vertices: []
       indices: 
       edges: []
@@ -164,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      walkingrightm2_0: 4972214917461303713
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
