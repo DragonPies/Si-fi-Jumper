@@ -1,14 +1,7 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: aff487d85e92e904994236d606caa8c6
-=======
-guid: 7ea71552b98283a44be457bf619657bb
->>>>>>> 0a36e6c34e2383e43cbe9b5bec837c294232a124
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 8726974202907474247
-    second: dashright_0
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -41,20 +34,16 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-<<<<<<< HEAD
-  spriteMode: 1
-=======
   spriteMode: 2
->>>>>>> 0a36e6c34e2383e43cbe9b5bec837c294232a124
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -74,16 +63,16 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 0
+  applyGammaDecoding: 1
   swizzle: 50462976
-  cookieLightType: 0
+  cookieLightType: 2
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -96,7 +85,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -109,7 +98,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -122,7 +111,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -132,38 +121,12 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: dashright_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 8
-        width: 30
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7493c40dcc07c1970800000000000000
-      internalID: 8726974202907474247
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-<<<<<<< HEAD
-    spriteID: 5e97eb03825dee720800000000000000
-=======
     spriteID: 
->>>>>>> 0a36e6c34e2383e43cbe9b5bec837c294232a124
     internalID: 0
     vertices: []
     indices: 
@@ -172,12 +135,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-<<<<<<< HEAD
-    nameFileIdTable:
-      dashright_0: 8726974202907474247
-=======
     nameFileIdTable: {}
->>>>>>> 0a36e6c34e2383e43cbe9b5bec837c294232a124
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
