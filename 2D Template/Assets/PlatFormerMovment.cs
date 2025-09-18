@@ -10,6 +10,7 @@ public class PlatFormerMovment : MonoBehaviour
     public float dashSpeed = 20f;
     public float dashDuration = 0.2f;
     public float dashCooldown = 3f;
+    public Animator animator; 
 
     // Which layers should the player phase through while dashing (set in Inspector).
     // Do NOT include your ground/floor layer here.
@@ -162,6 +163,7 @@ public class PlatFormerMovment : MonoBehaviour
         }
 
         UpdateDashUI();
+        animator.SetFloat("Speed", _movment);
     }
 
     public void Move(InputAction.CallbackContext ctx)
