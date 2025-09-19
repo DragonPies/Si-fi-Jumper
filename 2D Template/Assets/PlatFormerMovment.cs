@@ -159,6 +159,7 @@ public class PlatFormerMovment : MonoBehaviour
             {
                 int dir = movementValue > 0f ? 1 : -1;
                 StartDash(dir);
+                animator.SetTrigger("Dash");
             }
         }
 

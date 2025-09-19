@@ -496,7 +496,7 @@ Transform:
   m_GameObject: {fileID: 628050726}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.94, y: 35.83, z: 0}
+  m_LocalPosition: {x: -11.44, y: 36.32, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -530,7 +530,7 @@ MonoBehaviour:
   groundCheck: {fileID: 0}
   groundCheckRadius: 0.08
   dashTrail: {fileID: 0}
-  runtimeTrailColor: {r: 0, g: 1, b: 1, a: 1}
+  runtimeTrailColor: {r: 1, g: 0.53187966, b: 0, a: 1}
   runtimeTrailWidth: 0.2
   runtimeTrailTime: 0.25
   maxJumps: 2
@@ -958,7 +958,7 @@ Transform:
   m_GameObject: {fileID: 1300164333}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.035900116, y: 0.08129883, z: 10}
+  m_LocalPosition: {x: -0.07, y: 0.61, z: 10}
   m_LocalScale: {x: 11.128268, y: 4.164613, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
