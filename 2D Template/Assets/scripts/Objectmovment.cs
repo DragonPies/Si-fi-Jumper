@@ -3,27 +3,32 @@ using UnityEngine;
 
 public class PlatformMovment : MonoBehaviour
 {
+    private enum Axis { Vertical, Horizontal }
+
     [Header("Motion")]
+    [Tooltip("Movement axis: Vertical = up/down, Horizontal = right/left.")]
+    [SerializeField] private Axis movementAxis = Axis.Vertical;
+
     [Tooltip("Movement speed in units per second.")]
     [SerializeField] private float speed = 2f;
 
-    [Tooltip("Distance to move upward from the start position.")]
+    [Tooltip("Distance to move in the positive direction (up when Vertical, right when Horizontal).")]
     [SerializeField] private float distanceUp = 2f;
 
-    [Tooltip("Distance to move downward from the start position.")]
+    [Tooltip("Distance to move in the negative direction (down when Vertical, left when Horizontal).")]
     [SerializeField] private float distanceDown = 2f;
 
     [Header("Wait times")]
-    [Tooltip("Seconds to wait when the platform reaches the top position.")]
+    [Tooltip("Seconds to wait when the platform reaches the positive end.")]
     [SerializeField] private float waitAtTop = 0.5f;
 
-    [Tooltip("Seconds to wait when the platform reaches the bottom position.")]
+    [Tooltip("Seconds to wait when the platform reaches the negative end.")]
     [SerializeField] private float waitAtBottom = 0.5f;
 
     [Tooltip("If true uses localPosition, otherwise uses world position.")]
     [SerializeField] private bool useLocalSpace = true;
 
-    [Tooltip("If true the platform will first move up, otherwise it will first move down.")]
+    [Tooltip("If true the platform will first move toward the positive direction (up or right depending on axis).")]
     [SerializeField] private bool startMovingUp = true;
 
     // runtime positions
@@ -34,16 +39,18 @@ public class PlatformMovment : MonoBehaviour
 
     private void Start()
     {
-        _startPos = useLocalSpace ? transform.localPosition : transform.position;
-        _topPos = _startPos + Vector3.up * distanceUp;
-        _bottomPos = _startPos - Vector3.up * distanceDown;
-
-        // ensure sensible non-negative distances and non-negative waits
+        // ensure sensible non-negative distances and non-negative waits BEFORE computing positions
         distanceUp = Mathf.Max(0f, distanceUp);
         distanceDown = Mathf.Max(0f, distanceDown);
         waitAtTop = Mathf.Max(0f, waitAtTop);
         waitAtBottom = Mathf.Max(0f, waitAtBottom);
         speed = Mathf.Max(0.0001f, speed);
+
+        _startPos = useLocalSpace ? transform.localPosition : transform.position;
+
+        Vector3 axisDir = movementAxis == Axis.Vertical ? Vector3.up : Vector3.right;
+        _topPos = _startPos + axisDir * distanceUp;
+        _bottomPos = _startPos - axisDir * distanceDown;
 
         _routine = StartCoroutine(MoveRoutine());
     }
@@ -92,8 +99,9 @@ public class PlatformMovment : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Vector3 start = useLocalSpace ? transform.localPosition : transform.position;
-        Vector3 top = start + Vector3.up * distanceUp;
-        Vector3 bottom = start - Vector3.up * distanceDown;
+        Vector3 axisDir = movementAxis == Axis.Vertical ? Vector3.up : Vector3.right;
+        Vector3 top = start + axisDir * distanceUp;
+        Vector3 bottom = start - axisDir * distanceDown;
 
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(top, 0.05f);
