@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class PlatFormerMovment : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public float moveSpeed;
     public float jumpheight;
@@ -11,6 +11,13 @@ public class PlatFormerMovment : MonoBehaviour
     public float dashDuration = 0.2f;
     public float dashCooldown = 3f;
     public Animator animator; 
+    
+    Vector2 startPosition;
+
+    private void Awake()
+    {
+        startPosition = transform.position;
+    }
 
     // Which layers should the player phase through while dashing (set in Inspector).
     // Do NOT include your ground/floor layer here.
@@ -138,7 +145,7 @@ public class PlatFormerMovment : MonoBehaviour
         // Maintain dash velocity while dashing
         if (isDashing)
         {
-            rb2d.velocity = new Vector2(dashDirection * dashSpeed, rb2d.velocity.y);
+            rb2d.linearVelocity = new Vector2(dashDirection * dashSpeed, rb2d.linearVelocity.y);
             if (Time.time >= dashEndTime)
             {
                 EndDash();
@@ -146,7 +153,7 @@ public class PlatFormerMovment : MonoBehaviour
         }
         else
         {
-            rb2d.velocity = new Vector2(_movment, rb2d.velocity.y);
+            rb2d.linearVelocity = new Vector2(_movment, rb2d.linearVelocity.y);
         }
 
         // Enter key dash: only when not currently dashing, cooldown passed and player is moving.
@@ -154,7 +161,7 @@ public class PlatFormerMovment : MonoBehaviour
         if (keyboard != null && keyboard.enterKey.wasPressedThisFrame)
         {
             // Determine movement direction from input first, fallback to current velocity.
-            float movementValue = Mathf.Abs(_movment) > 0.001f ? _movment : rb2d.velocity.x;
+            float movementValue = Mathf.Abs(_movment) > 0.001f ? _movment : rb2d.linearVelocity.x;
             if (!isDashing && Time.time - lastDashTime > dashCooldown && Mathf.Abs(movementValue) > 0.01f)
             {
                 int dir = movementValue > 0f ? 1 : -1;
@@ -182,7 +189,7 @@ public class PlatFormerMovment : MonoBehaviour
             // and requires touching the ground to reset the count.
             if (jumpCount < maxJumps)
             {
-                rb2d.velocity = new Vector2(rb2d.velocity.x, jumpheight);
+                rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x, jumpheight);
                 jumpCount++;
                 animator.SetTrigger("Jump");
             }
@@ -486,5 +493,9 @@ public class PlatFormerMovment : MonoBehaviour
             // color goes from red (start) to yellow (near ready)
             dashFillImage.color = Color.Lerp(Color.red, Color.yellow, elapsed);
         }
+    }
+    public void Die() { 
+        
+        transform.position = startPosition;
     }
 }
