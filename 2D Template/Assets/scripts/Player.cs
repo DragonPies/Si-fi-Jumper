@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class Player : MonoBehaviour
 {
@@ -494,8 +496,16 @@ public class Player : MonoBehaviour
             dashFillImage.color = Color.Lerp(Color.red, Color.yellow, elapsed);
         }
     }
+    //death and respawn
     public void Die() { 
         
         transform.position = startPosition;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("NextLevel"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }
