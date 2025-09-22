@@ -111,4 +111,77 @@ public class PlatformMovment : MonoBehaviour
         Gizmos.DrawSphere(bottom, 0.05f);
         Gizmos.DrawLine(start, bottom);
     }
+
+#if UNITY_EDITOR
+    // Custom inspector inside the same file
+    [UnityEditor.CustomEditor(typeof(PlatformMovment))]
+    public class PlatformMovmentEditor : UnityEditor.Editor
+    {
+        UnityEditor.SerializedProperty movementAxisProp;
+        UnityEditor.SerializedProperty speedProp;
+        UnityEditor.SerializedProperty distanceUpProp;
+        UnityEditor.SerializedProperty distanceDownProp;
+        UnityEditor.SerializedProperty waitAtTopProp;
+        UnityEditor.SerializedProperty waitAtBottomProp;
+        UnityEditor.SerializedProperty useLocalSpaceProp;
+        UnityEditor.SerializedProperty startMovingUpProp;
+
+        void OnEnable()
+        {
+            movementAxisProp = serializedObject.FindProperty("movementAxis");
+            speedProp = serializedObject.FindProperty("speed");
+            distanceUpProp = serializedObject.FindProperty("distanceUp");
+            distanceDownProp = serializedObject.FindProperty("distanceDown");
+            waitAtTopProp = serializedObject.FindProperty("waitAtTop");
+            waitAtBottomProp = serializedObject.FindProperty("waitAtBottom");
+            useLocalSpaceProp = serializedObject.FindProperty("useLocalSpace");
+            startMovingUpProp = serializedObject.FindProperty("startMovingUp");
+        }
+
+        public override void OnInspectorGUI()
+        {
+            serializedObject.Update();
+
+            UnityEditor.EditorGUILayout.PropertyField(movementAxisProp);
+            UnityEditor.EditorGUILayout.PropertyField(speedProp);
+
+            bool isVertical = (movementAxisProp.enumValueIndex == 0); // 0 = Vertical, 1 = Horizontal
+
+            if (isVertical)
+            {
+                UnityEditor.EditorGUILayout.LabelField("Distances (Vertical)", UnityEditor.EditorStyles.boldLabel);
+                UnityEditor.EditorGUILayout.PropertyField(distanceUpProp, new GUIContent("Distance Up (top)"));
+                UnityEditor.EditorGUILayout.PropertyField(distanceDownProp, new GUIContent("Distance Down (bottom)"));
+            }
+            else
+            {
+                UnityEditor.EditorGUILayout.LabelField("Distances (Horizontal)", UnityEditor.EditorStyles.boldLabel);
+                UnityEditor.EditorGUILayout.PropertyField(distanceUpProp, new GUIContent("Distance Right"));
+                UnityEditor.EditorGUILayout.PropertyField(distanceDownProp, new GUIContent("Distance Left"));
+            }
+
+            UnityEditor.EditorGUILayout.Space();
+
+            if (isVertical)
+            {
+                UnityEditor.EditorGUILayout.LabelField("Wait times (Vertical)", UnityEditor.EditorStyles.boldLabel);
+                UnityEditor.EditorGUILayout.PropertyField(waitAtTopProp, new GUIContent("Wait at Top (seconds)"));
+                UnityEditor.EditorGUILayout.PropertyField(waitAtBottomProp, new GUIContent("Wait at Bottom (seconds)"));
+            }
+            else
+            {
+                UnityEditor.EditorGUILayout.LabelField("Wait times (Horizontal)", UnityEditor.EditorStyles.boldLabel);
+                UnityEditor.EditorGUILayout.PropertyField(waitAtTopProp, new GUIContent("Wait at Right (seconds)"));
+                UnityEditor.EditorGUILayout.PropertyField(waitAtBottomProp, new GUIContent("Wait at Left (seconds)"));
+            }
+
+            UnityEditor.EditorGUILayout.Space();
+
+            UnityEditor.EditorGUILayout.PropertyField(useLocalSpaceProp);
+            UnityEditor.EditorGUILayout.PropertyField(startMovingUpProp);
+
+            serializedObject.ApplyModifiedProperties();
+        }
+    }
+#endif
 }
