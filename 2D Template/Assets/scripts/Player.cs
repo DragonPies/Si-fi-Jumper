@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.Windows;
 
 
 public class Player : MonoBehaviour
@@ -72,6 +73,12 @@ public class Player : MonoBehaviour
     private Image dashFillImage;
     private Text dashCooldownText;
     private GameObject dashUIRoot;
+
+    public Vector2 boxsize;
+    public Vector3 boxoffset;
+
+    private bool left;
+    private bool right;
 
     void Start()
     {
@@ -155,7 +162,16 @@ public class Player : MonoBehaviour
         }
         else
         {
-            rb2d.linearVelocity = new Vector2(_movment, rb2d.linearVelocity.y);
+            float newMove = _movment;
+
+            left = Physics2D.BoxCast(transform.position - boxoffset, boxsize, 0f, Vector2.zero, Mathf.Infinity, groundLayer);
+            right = Physics2D.BoxCast(transform.position + boxoffset, boxsize, 0f, Vector2.zero, Mathf.Infinity, groundLayer);
+
+            if ((_movment > 0 && right) || (_movment < 0 && left))
+                newMove = 0;
+
+            rb2d.linearVelocity = new Vector2(newMove, rb2d.linearVelocity.y);
+
         }
 
         // Enter key dash: only when not currently dashing, cooldown passed and player is moving.
@@ -176,9 +192,16 @@ public class Player : MonoBehaviour
         animator.SetFloat("Speed", _movment);
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(transform.position+boxoffset, boxsize);
+        Gizmos.DrawWireCube(transform.position -boxoffset, boxsize);
+    }
+
     public void Move(InputAction.CallbackContext ctx)
     {
         float inputX = ctx.ReadValue<Vector2>().x;
+
         _movment = inputX * moveSpeed;
     }
 

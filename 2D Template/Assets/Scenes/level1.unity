@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 136604522}
   - component: {fileID: 136604524}
   - component: {fileID: 136604523}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: level1platforms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31173,7 +31173,7 @@ MonoBehaviour:
     m_Bits: 0
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   groundCheck: {fileID: 0}
   groundCheckRadius: 0.08
   dashTrail: {fileID: 156180595}
@@ -31188,6 +31188,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  boxsize: {x: 0.23, y: 1.42}
+  boxoffset: {x: 0.335, y: 0, z: 0}
 --- !u!50 &1934777178
 Rigidbody2D:
   serializedVersion: 5
@@ -31213,7 +31215,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &1934777179
 BoxCollider2D:
@@ -31259,8 +31261,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.15811254, y: 0.30985808}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.06, y: 0.235}
+  m_EdgeRadius: 0.18
 --- !u!212 &1934777180
 SpriteRenderer:
   m_ObjectHideFlags: 0

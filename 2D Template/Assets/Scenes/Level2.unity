@@ -463,10 +463,9 @@ MonoBehaviour:
   runtimeTrailTime: 0.25
   maxJumps: 2
   doNotPhaseAssets:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1611490340}
+  - {fileID: 1938225293}
+  - {fileID: 1844152061}
   - {fileID: 0}
 --- !u!50 &220179951
 Rigidbody2D:
