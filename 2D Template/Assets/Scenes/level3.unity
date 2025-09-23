@@ -10052,7 +10052,7 @@ MonoBehaviour:
     m_Bits: 0
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   groundCheck: {fileID: 0}
   groundCheckRadius: 0.08
   dashTrail: {fileID: 1879155907}
@@ -10067,6 +10067,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  boxsize: {x: 0.23, y: 1.42}
+  boxoffset: {x: 0.335, y: 0, z: 0}
 --- !u!50 &522028493
 Rigidbody2D:
   serializedVersion: 5
@@ -10204,7 +10206,7 @@ Transform:
   m_GameObject: {fileID: 522028489}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.000000008406688, w: 1}
-  m_LocalPosition: {x: -7.32, y: 0.73, z: 0}
+  m_LocalPosition: {x: 67.09, y: 3.15, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10381,7 +10383,7 @@ GameObject:
   - component: {fileID: 803675146}
   - component: {fileID: 803675145}
   - component: {fileID: 803675147}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: passablepillars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12904,7 +12906,7 @@ GameObject:
   - component: {fileID: 1070416930}
   - component: {fileID: 1070416932}
   - component: {fileID: 1070416931}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ground&platforms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
