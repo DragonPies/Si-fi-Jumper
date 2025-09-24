@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
 using UnityEngine.Windows;
 
@@ -167,7 +168,7 @@ public class Player : MonoBehaviour
             left = Physics2D.BoxCast(transform.position - boxoffset, boxsize, 0f, Vector2.zero, Mathf.Infinity, groundLayer);
             right = Physics2D.BoxCast(transform.position + boxoffset, boxsize, 0f, Vector2.zero, Mathf.Infinity, groundLayer);
 
-            if ((_movment > 0 && right) || (_movment < 0 && left))
+            if (!isDashing && ((_movment > 0 && right) || (_movment < 0 && left)))
                 newMove = 0;
 
             rb2d.linearVelocity = new Vector2(newMove, rb2d.linearVelocity.y);
@@ -306,7 +307,7 @@ public class Player : MonoBehaviour
         {
             ignoredColliders.Clear();
             // Find all 2D colliders in scene and ignore collisions with those not on ground layers.
-            Collider2D[] all = FindObjectsOfType<Collider2D>();
+            Collider2D[] all = FindObjectsByType<Collider2D>(FindObjectsSortMode.None);
             foreach (var col in all)
             {
                 if (col == playerCollider) continue;
@@ -327,10 +328,6 @@ public class Player : MonoBehaviour
                 }
                 if (belongsToProtected) continue;
 
-                int layerBit = 1 << col.gameObject.layer;
-                // Skip colliders that belong to groundLayer (we want to keep floor collisions)
-                if ((groundLayer.value & layerBit) != 0) continue;
-                // Ignore collision between player and this collider
                 Physics2D.IgnoreCollision(playerCollider, col, true);
                 ignoredColliders.Add(col);
             }
